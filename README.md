@@ -1,16 +1,17 @@
-# SuperPoint Image Aligner Pro
+# 🌟 SuperPoint Image Aligner Pro 🌟
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)  
+**SuperPoint Image Aligner Pro** is a cutting-edge image alignment tool designed for professionals and researchers. Built on top of the **SuperPoint** model from Hugging Face's `transformers` library, this tool provides advanced features such as:
 
-**SuperPoint Image Aligner Pro** is a professional-grade image alignment tool designed for aligning multiple images with a reference image using advanced feature detection and matching techniques. Built on top of the **SuperPoint** model from Hugging Face's `transformers` library, this tool offers:
-
-- **Scenario presets**: Predefined parameter configurations for different use cases (e.g., low-texture images, satellite imagery, medical images).
-- **Multi-pass alignment**: Iterative refinement for improved accuracy.
-- **Detailed parameter documentation**: Comprehensive tooltips and descriptions for fine-tuning.
-- **Advanced tuning controls**: Customize keypoint detection, feature matching, and geometric validation parameters.
+- **Scenario Presets**: Predefined parameter configurations for different use cases.
+- **Multi-Pass Alignment**: Iterative refinement for improved accuracy.
+- **Detailed Parameter Documentation**: Comprehensive tooltips and descriptions for fine-tuning.
+- **Advanced Tuning Controls**: Customize keypoint detection, feature matching, and geometric validation parameters.
 - **Auto AI**: Automatic parameter optimization based on image characteristics.
 
-## Table of Contents
+---
+
+## 📚 Table of Contents
 
 - [Features](#features)
 - [Installation](#installation)
@@ -23,10 +24,10 @@
 
 ---
 
-## Features
+## ✨ Features
 
 1. **SuperPoint Feature Detection**:
-   - Extracts keypoints and descriptors using the SuperPoint model.
+   - Extracts keypoints and descriptors using the **SuperPoint** model.
    - Filters keypoints based on confidence scores and maximum keypoint limits.
 
 2. **Auto AI Parameter Optimization**:
@@ -38,7 +39,7 @@
    - Uses FLANN-based feature matching and RANSAC for robust homography estimation.
 
 4. **Professional GUI**:
-   - Built with PyQt6 for an intuitive user interface.
+   - Built with **PyQt6** for an intuitive user interface.
    - Includes input configuration, advanced tuning parameters, and real-time logging.
 
 5. **Scenario Presets**:
@@ -52,7 +53,7 @@
 
 ---
 
-## Installation
+## 💻 Installation
 
 ### Prerequisites
 
@@ -76,7 +77,7 @@ cd SuperPoint-Image-Aligner-Pro
 
 ---
 
-## Usage
+## 🚀 Usage
 
 ### Running the GUI
 
@@ -96,11 +97,17 @@ python main.py
 
 The GUI provides sliders and input fields for adjusting key parameters, including:
 
-- **Minimum Matches**: Minimum number of geometrically consistent matches required.
-- **Ratio Threshold**: Lowe's ratio test threshold for feature matching.
-- **FLANN Parameters**: Number of index trees and search checks.
-- **Geometric Validation**: USAC reprojection error threshold and minimum inlier ratio.
-- **Feature Control**: Maximum keypoints and match distance threshold.
+| Parameter               | Description                                                                                   | Default Value |
+|-------------------------|-----------------------------------------------------------------------------------------------|---------------|
+| `min_matches`           | Minimum number of geometrically consistent matches required for alignment.                    | 15            |
+| `ratio_threshold`       | Lowe's ratio test threshold for feature matching.                                             | 0.7           |
+| `flann_trees`           | Number of FLANN index trees (KD-Tree).                                                        | 5             |
+| `flann_checks`          | Number of FLANN search checks.                                                                | 150           |
+| `usac_thresh`           | USAC reprojection error threshold (pixels).                                                   | 3.0           |
+| `max_keypoints`         | Maximum number of keypoints retained per image.                                               | 1200          |
+| `match_distance_thresh` | Absolute descriptor distance threshold.                                                       | 0.65          |
+| `min_inlier_ratio`      | Minimum ratio of inlier matches to total matches.                                             | 0.25          |
+| `num_passes`            | Number of alignment iterations (1-5).                                                         | 1             |
 
 ### Auto AI
 
@@ -115,27 +122,11 @@ The processing log displays real-time updates, including:
 
 ---
 
-## Advanced Tuning Parameters
-
-| Parameter               | Description                                                                                   | Default Value |
-|-------------------------|-----------------------------------------------------------------------------------------------|---------------|
-| `min_matches`           | Minimum number of geometrically consistent matches required for alignment.                    | 15            |
-| `ratio_threshold`       | Lowe's ratio test threshold for feature matching.                                             | 0.7           |
-| `flann_trees`           | Number of FLANN index trees (KD-Tree).                                                        | 5             |
-| `flann_checks`          | Number of FLANN search checks.                                                                | 150           |
-| `usac_thresh`           | USAC reprojection error threshold (pixels).                                                   | 3.0           |
-| `max_keypoints`         | Maximum number of keypoints retained per image.                                               | 1200          |
-| `match_distance_thresh` | Absolute descriptor distance threshold.                                                       | 0.65          |
-| `min_inlier_ratio`      | Minimum ratio of inlier matches to total matches.                                             | 0.25          |
-| `num_passes`            | Number of alignment iterations (1-5).                                                         | 1             |
-
----
-
-## In-Depth Calculation Explanations
+## 🔍 In-Depth Calculation Explanations
 
 ### Feature Extraction
 
-The SuperPoint model extracts keypoints and descriptors from images. The keypoints are filtered based on their confidence scores. If the number of keypoints exceeds the specified maximum (`max_keypoints`), only the top-scoring keypoints are retained.
+The **SuperPoint** model extracts keypoints and descriptors from images. The keypoints are filtered based on their confidence scores. If the number of keypoints exceeds the specified maximum (`max_keypoints`), only the top-scoring keypoints are retained.
 
 $$
 \text{Filtered Keypoints} = \text{Keypoints}[\text{argsort(Scores)}[-\text{max\_keypoints}:]]
@@ -194,7 +185,7 @@ Only alignments with an inlier ratio greater than `min_inlier_ratio` are accepte
 
 ---
 
-## Code Structure
+## 🧩 Code Structure
 
 - **Model Initialization**: Loads the SuperPoint model and sets up the device (CPU/GPU).
 - **Feature Extraction**: Extracts and filters keypoints and descriptors using SuperPoint.
@@ -204,12 +195,35 @@ Only alignments with an inlier ratio greater than `min_inlier_ratio` are accepte
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
 
 ---
 
-## License
+## 📜 License
 
 This project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for details.
+
+---
+
+### 🎉 Acknowledgments
+
+- Special thanks to the **Hugging Face Transformers** team for providing the **SuperPoint** model.
+- Thanks to the **OpenCV** community for their robust computer vision tools.
+
+---
+
+### 📝 Citations
+
+If you use this tool in your research, please cite it as follows:
+
+```bibtex
+@software{SuperPointImageAlignerPro,
+  author = {Abdullah Al Siam},
+  title = {SuperPoint Image Aligner Pro},
+  year = {2025},
+  url = {https://github.com/Rhythm2310/SuperPoint-Image-Aligner-Pro},
+  version = {1.0.0}
+}
+```
