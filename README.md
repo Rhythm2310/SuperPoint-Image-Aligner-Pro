@@ -128,64 +128,56 @@ The processing log displays real-time updates, including:
 
 The **SuperPoint** model extracts keypoints and descriptors from images. The keypoints are filtered based on their confidence scores. If the number of keypoints exceeds the specified maximum (`max_keypoints`), only the top-scoring keypoints are retained.
 
-$$
-\text{Filtered Keypoints} = \text{Keypoints}[\text{argsort(Scores)}[-\text{max\_keypoints}:]]
-$$
+```
+Filtered Keypoints = Keypoints[argsort(Scores)[-max_keypoints:]]
+```
 
 ### Auto AI: Image Analysis
 
 The `analyze_image` function evaluates image characteristics such as texture, brightness, and contrast to suggest optimal parameters. Texture sharpness is measured using the variance of the Laplacian:
 
-$$
-\text{Laplacian Variance} = \text{Var}(\nabla^2 I)
-$$
+```
+Laplacian Variance = Var(Laplacian(Image))
+```
 
 Brightness and contrast are calculated as:
 
-$$
-\text{Mean Intensity} = \frac{1}{N} \sum_{i=1}^{N} I_i
-$$
-$$
-\text{Contrast} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (I_i - \text{Mean Intensity})^2}
-$$
+```
+Mean Intensity = Sum(Pixel Values) / Total Pixels
+Contrast = Sqrt(Sum((Pixel Values - Mean Intensity)^2) / Total Pixels)
+```
 
 Based on these metrics, the function adjusts parameters like `min_matches`, `ratio_threshold`, and `flann_checks`.
 
-Feature Matching 
+### Feature Matching
 
-The FLANN-based matcher uses the k-nearest neighbors algorithm to find the best matches between descriptors. Lowe's ratio test ensures that only high-quality matches are retained: 
-m.distance < \text{`ratio_threshold`} \times n.distance
+The FLANN-based matcher uses the k-nearest neighbors algorithm to find the best matches between descriptors. Lowe's ratio test ensures that only high-quality matches are retained:
 
-Additionally, an absolute distance threshold is applied: 
-m.distance < \text{`match_distance_thresh`}
+```
+m.distance < ratio_threshold * n.distance
+```
 
-In this context: 
+Additionally, an absolute distance threshold is applied:
 
-    `ratio_threshold`: The threshold for Lowe's ratio test, which determines the quality of matches.
-    `match_distance_thresh`: The maximum allowable descriptor distance for a match to be considered valid.
-     
-
-For example: 
-
-    A lower `ratio_threshold` (e.g., 0.6) increases the strictness of feature matching but may reduce the total number of matches.
-    A higher `match_distance_thresh` (e.g., 0.8) allows more matches but may include false positives.
-     
+```
+m.distance < match_distance_thresh
+```
 
 ### Homography Estimation
 
-The homography matrix $ H $ is estimated using RANSAC with the USAC algorithm. The reprojection error threshold ($ \epsilon $) determines the maximum allowable error for inliers:
+The homography matrix `H` is estimated using RANSAC with the USAC algorithm. The reprojection error threshold determines the maximum allowable error for inliers:
 
-$$
-\text{Reprojection Error} = \| \mathbf{x}' - H \mathbf{x} \|
-$$
+```
+Reprojection Error = ||x' - H * x||
+```
 
-where $ \mathbf{x} $ and $ \mathbf{x}' $ are corresponding points in the source and destination images.
+where `x` and `x'` are corresponding points in the source and destination images.
 
 The inlier ratio is calculated as:
 
-$$
-\text{Inlier Ratio} = \frac{\text{Number of Inliers}}{\text{Total Matches}}
-$$
+```
+Inlier Ratio = Number of Inliers / Total Matches
+```
 
 Only alignments with an inlier ratio greater than `min_inlier_ratio` are accepted.
 
@@ -226,10 +218,10 @@ If you use this tool in your research, please cite it as follows:
 
 ```bibtex
 @software{SuperPointImageAlignerPro,
-  author = {Abdullah Al Siam},
+  author = {Your Name},
   title = {SuperPoint Image Aligner Pro},
-  year = {2025},
-  url = {https://github.com/Rhythm2310/SuperPoint-Image-Aligner-Pro},
+  year = {2023},
+  url = {https://github.com/your-username/SuperPoint-Image-Aligner-Pro},
   version = {1.0.0}
 }
 ```
