@@ -220,7 +220,7 @@ If you use this tool in your research, please cite it as follows:
 @software{SuperPointImageAlignerPro,
   author = {Abdullah Al Siam},
   title = {SuperPoint Image Aligner Pro},
-  year = {2023},
+  year = {2025},
   url = {https://github.com/Rhythm2310/SuperPoint-Image-Aligner-Pro},
   version = {1.0.0}
 }
