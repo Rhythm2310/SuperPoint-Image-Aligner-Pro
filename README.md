@@ -1,5 +1,7 @@
 # SuperPoint Image Aligner Pro
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 **SuperPoint Image Aligner Pro** is a professional-grade image alignment tool designed for aligning multiple images with a reference image using advanced feature detection and matching techniques. Built on top of the **SuperPoint** model from Hugging Face's `transformers` library, this tool offers:
 
 - **Scenario presets**: Predefined parameter configurations for different use cases (e.g., low-texture images, satellite imagery, medical images).
@@ -7,6 +9,19 @@
 - **Detailed parameter documentation**: Comprehensive tooltips and descriptions for fine-tuning.
 - **Advanced tuning controls**: Customize keypoint detection, feature matching, and geometric validation parameters.
 - **Auto AI**: Automatic parameter optimization based on image characteristics.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Advanced Tuning Parameters](#advanced-tuning-parameters)
+- [In-Depth Calculation Explanations](#in-depth-calculation-explanations)
+- [Code Structure](#code-structure)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
 
 ## Features
 
@@ -35,6 +50,8 @@
      - Satellite Imagery
      - Medical Images
 
+---
+
 ## Installation
 
 ### Prerequisites
@@ -57,6 +74,8 @@ git clone https://github.com/your-username/SuperPoint-Image-Aligner-Pro.git
 cd SuperPoint-Image-Aligner-Pro
 ```
 
+---
+
 ## Usage
 
 ### Running the GUI
@@ -76,6 +95,7 @@ python main.py
 ### Advanced Tuning Parameters
 
 The GUI provides sliders and input fields for adjusting key parameters, including:
+
 - **Minimum Matches**: Minimum number of geometrically consistent matches required.
 - **Ratio Threshold**: Lowe's ratio test threshold for feature matching.
 - **FLANN Parameters**: Number of index trees and search checks.
@@ -92,6 +112,24 @@ The processing log displays real-time updates, including:
 - Detected keypoints and matches.
 - Homography estimation results.
 - Saved output paths.
+
+---
+
+## Advanced Tuning Parameters
+
+| Parameter               | Description                                                                                   | Default Value |
+|-------------------------|-----------------------------------------------------------------------------------------------|---------------|
+| `min_matches`           | Minimum number of geometrically consistent matches required for alignment.                    | 15            |
+| `ratio_threshold`       | Lowe's ratio test threshold for feature matching.                                             | 0.7           |
+| `flann_trees`           | Number of FLANN index trees (KD-Tree).                                                        | 5             |
+| `flann_checks`          | Number of FLANN search checks.                                                                | 150           |
+| `usac_thresh`           | USAC reprojection error threshold (pixels).                                                   | 3.0           |
+| `max_keypoints`         | Maximum number of keypoints retained per image.                                               | 1200          |
+| `match_distance_thresh` | Absolute descriptor distance threshold.                                                       | 0.65          |
+| `min_inlier_ratio`      | Minimum ratio of inlier matches to total matches.                                             | 0.25          |
+| `num_passes`            | Number of alignment iterations (1-5).                                                         | 1             |
+
+---
 
 ## In-Depth Calculation Explanations
 
@@ -154,6 +192,8 @@ $$
 
 Only alignments with an inlier ratio greater than `min_inlier_ratio` are accepted.
 
+---
+
 ## Code Structure
 
 - **Model Initialization**: Loads the SuperPoint model and sets up the device (CPU/GPU).
@@ -161,6 +201,14 @@ Only alignments with an inlier ratio greater than `min_inlier_ratio` are accepte
 - **Alignment Logic**: Implements multi-pass alignment with FLANN-based matching and RANSAC.
 - **Worker Thread**: Handles alignment in a separate thread to prevent GUI freezing.
 - **GUI**: Built with PyQt6 for an interactive and user-friendly experience.
+
+---
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+
+---
 
 ## License
 
