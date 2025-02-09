@@ -71,7 +71,7 @@ pip install torch transformers opencv-python pillow PyQt6
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/Rhythm2310/SuperPoint-Image-Aligner-Pro-.git
+git clone https://github.com/Rhythm2310/SuperPoint-Image-Aligner-Pro.git
 cd SuperPoint-Image-Aligner-Pro
 ```
 
