@@ -1,5 +1,3 @@
----
-
 # SuperPoint Image Aligner Pro
 
 **SuperPoint Image Aligner Pro** is a professional-grade image alignment tool designed for aligning multiple images with a reference image using advanced feature detection and matching techniques. Built on top of the **SuperPoint** model from Hugging Face's `transformers` library, this tool offers:
@@ -167,7 +165,3 @@ Only alignments with an inlier ratio greater than `min_inlier_ratio` are accepte
 ## License
 
 This project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for details.
-
----
-
-Feel free to customize this template further to suit your preferences or add additional sections like "Acknowledgments" or "Citations." Let me know if you need help with anything else!
