@@ -1,5 +1,3 @@
-Certainly! Below is an enhanced and professional README file for your GitHub repository, incorporating the GNU GPL v3 license, more in-depth explanations of the calculations, and LaTeX formatting for mathematical expressions.
-
 ---
 
 # SuperPoint Image Aligner Pro
