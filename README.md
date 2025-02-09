@@ -151,19 +151,25 @@ $$
 
 Based on these metrics, the function adjusts parameters like `min_matches`, `ratio_threshold`, and `flann_checks`.
 
-### Feature Matching
+Feature Matching 
 
-The FLANN-based matcher uses the k-nearest neighbors algorithm to find the best matches between descriptors. Lowe's ratio test ensures that only high-quality matches are retained:
+The FLANN-based matcher uses the k-nearest neighbors algorithm to find the best matches between descriptors. Lowe's ratio test ensures that only high-quality matches are retained: 
+m.distance < \text{`ratio_threshold`} \times n.distance
 
-$$
-m.distance < \text{ratio\_threshold} \times n.distance
-$$
+Additionally, an absolute distance threshold is applied: 
+m.distance < \text{`match_distance_thresh`}
 
-Additionally, an absolute distance threshold is applied:
+In this context: 
 
-$$
-m.distance < \text{match\_distance\_thresh}
-$$
+    `ratio_threshold`: The threshold for Lowe's ratio test, which determines the quality of matches.
+    `match_distance_thresh`: The maximum allowable descriptor distance for a match to be considered valid.
+     
+
+For example: 
+
+    A lower `ratio_threshold` (e.g., 0.6) increases the strictness of feature matching but may reduce the total number of matches.
+    A higher `match_distance_thresh` (e.g., 0.8) allows more matches but may include false positives.
+     
 
 ### Homography Estimation
 
